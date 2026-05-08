@@ -35,6 +35,7 @@ call introduvector
 mov ebx,vector1
 mov edx,vector2
 call ProductoEscalarVector
+call sumaVector
 
 fin:
 xor ebx,ebx
@@ -150,4 +151,23 @@ pop ebx
 pop ecx
 call CambioLinea
     
+ret
+sumaVector:
+    push ecx
+    push ebx
+    push edx
+    push esi
+    push eax
+    suma:
+        mov byte al,edx[esi]
+        add ebx[esi],al
+        inc esi
+    loop suma
+    pop eax
+    pop esi
+    pop edx
+    pop ebx
+    pop ecx
+    call CambioLinea
+    call Desplvector
 ret
